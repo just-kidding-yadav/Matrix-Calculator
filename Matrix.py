@@ -7,25 +7,27 @@ def mat_def():
 
     New = [[0 for col in range(n1)]for row in range(m1)]
 
-    print("Enter all elements one after other.")
+    print("\n Enter all elements one after other.")
     for i in range(m1):
         for j in range(n1):
-            New[i][j] = int(input(name + str(i+1) + str(j+1)))
+            New[i][j] = int(input(name + str(i+1) + str(j+1) + ": "))
     return (name, New)
 
 def mat_print(A):
+    m1 = len(A)
+    n1 = len(A[0])
     for i in range(m1):
         for j in range(n1):
-            print(Mat[p][i][j], end = " ")
+            print(A[i][j], end = " ")
         print()
     print()
 
 def add(A, B):
     name = str(input("Name of the new matrix is: "))
     m1 = len(A)
-    n1 = len(A[1])
+    n1 = len(A[0])
     m2 = len(B)
-    n2 = len(B[1])
+    n2 = len(B[0])
 
     if(m1 == m2 and n1 == n2):
         Out = [[0 for col in range(n1)]for row in range(m1)]
@@ -41,12 +43,12 @@ def add(A, B):
 def mul(A, B):
     name = str(input("Name of the new matrix is: "))
     m1 = len(A)
-    n1 = len(A[1])
+    n1 = len(A[0])
     m2 = len(B)
-    n2 = len(B[1])
+    n2 = len(B[0])
 
     if(m2 == n1):
-        product = [[0 for row in range(n2)]for col in range(m1)]
+        prod = [[0 for row in range(n2)]for col in range(m1)]
         for i in range(m1):
             for j in range(n2):
                 prod[i][j]=0
@@ -61,7 +63,7 @@ def mul(A, B):
 def tnp(A):
     name = str(input("Name of the new matrix is: "))
     m1 = len(A)
-    n1 = len(A[1])
+    n1 = len(A[0])
     
     comp = [[0 for col in range(m1)]for row in range(n1)]
     for i in range(n1):
@@ -71,6 +73,9 @@ def tnp(A):
 
 def det(A):
     p = len(A)
+    if (len(A[0]) != p):
+        "The matrix is not a square matrix."
+        return None
     determinant = 0
     if p == 1:
         determinant = int(A[0][0])

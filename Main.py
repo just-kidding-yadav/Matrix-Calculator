@@ -6,7 +6,7 @@ def toMat(tuple_2):
     if (tuple_2[0] == None):
         return
     elif (tuple_2[0] in Mat):
-        tuple_2[0] = str(input("This name " + tuple_2[0] + " is already used, use another name: "))
+        tuple_2 = (str(input("This name " + tuple_2[0] + " is already used, use another name: ")), tuple_2[1])
     Mat[tuple_2[0]] = tuple_2[1]
 
 # All Matrices are stored under "Mat"
@@ -30,9 +30,16 @@ while(y != "Q"):
         if (A not in Mat):
             print("Matrix " + A + " is not yet defined")
         else:
-            print("\n" + "Matrix" + A + "is")
+            print("\n" + "Matrix " + A + " is")
             mat_print(Mat[A])
 
+    elif(y == "O"):
+        A = str(input("Enter Name of the matrix to print order: "))
+        if (A not in Mat):
+            print("Matrix " + A + " is not yet defined")
+        else:
+            print(str(len(Mat[A])) + "X" + str(len(Mat[A][0])))
+        
     elif(y == "A"):
         A = str(input("Enter Name of the first matrix: "))
         B = str(input("Enter Name of the second matrix: "))
@@ -59,6 +66,19 @@ while(y != "Q"):
             print("Matrix " + A + " is not yet defined")
         else:
             toMat(tnp(Mat[A]))
+
+    elif(y == "D"):
+        A = str(input("Enter Name of the matrix to calculate determinant: "))
+        if (A not in Mat):
+            print("Matrix " + A + " is not yet defined")
+        else:
+            Out = det(Mat[A])
+            if Out != None :
+                print(Out)
+        
+    else:
+        print("Please enter a valid input.")
+        inst()
         
     y = (input("\nEnter a letter: ")).upper()
 
