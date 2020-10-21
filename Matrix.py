@@ -13,13 +13,7 @@ def mat_def():
             New[i][j] = int(input(name + str(i+1) + str(j+1)))
     return (name, New)
 
-def mat_print(Mat, p):
-    m1 = len(A)
-    n1 = len(A[1])
-    m2 = len(B)
-    n2 = len(B[1])
-    
-    print("\n" + "Matrix" + str(p) + "is")
+def mat_print(A):
     for i in range(m1):
         for j in range(n1):
             print(Mat[p][i][j], end = " ")
